@@ -22,11 +22,11 @@ class Ball : Body
         y = (int)Math.Round(basey - sizey / 2);
 
         // Random starting vector
-        ////// limit start to 90°left n 90°right
-        speed = new Vector2(
-            (float)(random.NextDouble() * 2 - 1),
-            (float)(random.NextDouble() * 2 - 1)
-        );
+        // vx ∈ [-1; 1]
+        float vx = (float)(random.NextDouble() * 2 - 1);
+        // vy ∈ [-vx; vx]
+        float vy = (float)(random.NextDouble() * 2 - 1) * vx;
+        speed = new Vector2(vx, vy);
         speed = Vector2.Normalize(speed) * startSpeed;
     }
 }
